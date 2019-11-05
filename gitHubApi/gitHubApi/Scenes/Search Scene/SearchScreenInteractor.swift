@@ -14,7 +14,7 @@ import UIKit
 
 protocol SearchScreenBusinessLogic
 {
-  func doSomething(request: SearchScreen.Something.Request)
+  func getSearchResult(request: SearchScreen.User.Request)
 }
 
 protocol SearchScreenDataStore
@@ -30,12 +30,15 @@ class SearchScreenInteractor: SearchScreenBusinessLogic, SearchScreenDataStore
   
   // MARK: Do something
   
-  func doSomething(request: SearchScreen.Something.Request)
+  func getSearchResult(request: SearchScreen.User.Request)
   {
     worker = SearchScreenWorker()
-    worker?.doSomeWork()
+    worker?.getUsersData(user: request.userName, completion: {(response, error) in
+        //response = SearchScreen.User.Response()
+        self.presenter?.presentResponse(response: response!)
+        
+    })
     
-    let response = SearchScreen.Something.Response()
-    presenter?.presentSomething(response: response)
+    
   }
 }

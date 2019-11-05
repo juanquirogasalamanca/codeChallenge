@@ -11,10 +11,13 @@
 //
 
 import UIKit
+import AlamofireNetworkActivityIndicator
+
 
 protocol SearchScreenDisplayLogic: class
 {
-  func displaySomething(viewModel: SearchScreen.Something.ViewModel)
+  func displayResponse(viewModel: [SearchScreen.User.ViewModel])
+  func displayError(error : String)
 }
 
 class SearchScreenViewController: UIViewController, SearchScreenDisplayLogic
@@ -71,22 +74,43 @@ class SearchScreenViewController: UIViewController, SearchScreenDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    NetworkActivityIndicatorManager.shared.isEnabled = true
+    
   }
   
   // MARK: Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var searchTextField: UITextField!
+   
+    @IBAction func searchButtonAction(_ sender: Any) {
+        
+        guard let user = searchTextField.text, !searchTextField.text!.isEmpty else
+        {
+            
+            return
+        }
+        
+        getResutls(searchStr: user)
+    }
+
     
-  
-  func doSomething()
+  func getResutls(searchStr : String)
   {
-    let request = SearchScreen.Something.Request()
-    interactor?.doSomething(request: request)
+    let request = SearchScreen.User.Request(userName: searchStr)
+    interactor?.getSearchResult(request: request)
   }
-  
-  func displaySomething(viewModel: SearchScreen.Something.ViewModel)
+    
+  func displayResponse(viewModel: [SearchScreen.User.ViewModel])
   {
     //nameTextField.text = viewModel.name
+    print("Result")
+    print(viewModel.count)
+  }
+    
+    
+  func displayError(error: String) {
+//       loginUserText.text = "Error " + error
+    print(error)
   }
 }

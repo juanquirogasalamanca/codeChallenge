@@ -14,7 +14,8 @@ import UIKit
 
 protocol SearchScreenPresentationLogic
 {
-  func presentSomething(response: SearchScreen.Something.Response)
+  func presentResponse(response: SearchScreen.User.UserList)
+  func presentError(error : String)
 }
 
 class SearchScreenPresenter: SearchScreenPresentationLogic
@@ -23,9 +24,21 @@ class SearchScreenPresenter: SearchScreenPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: SearchScreen.Something.Response)
+  func presentResponse(response: SearchScreen.User.UserList)
   {
-    let viewModel = SearchScreen.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+  //  print(response)
+//
+    var itemList : [SearchScreen.User.ViewModel] = []
+    for item in response.items{
+        let viewModel = SearchScreen.User.ViewModel(login: item.login, id: item.id, avatar_url: item.avatarURL, html_url: item.htmlURL, score: item.score, repos_url: item.reposURL)
+        itemList.append(viewModel)
+    }
+    
+    viewController?.displayResponse(viewModel: itemList)
+    
+  }
+    
+  func presentError(error: String) {
+      viewController?.displayError(error: error)
   }
 }
