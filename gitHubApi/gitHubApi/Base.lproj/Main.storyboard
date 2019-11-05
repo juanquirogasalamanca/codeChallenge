@@ -1,24 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--User Serch-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="User Serch" id="BYZ-38-t0r" customClass="SearchScreenViewController" customModule="gitHubApi" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="write a Github user" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SRB-D1-vDX">
+                                <rect key="frame" x="20" y="431" width="374" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiI-YP-GRA">
+                                <rect key="frame" x="183" y="505" width="48" height="30"/>
+                                <state key="normal" title="Search"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="SRB-D1-vDX" secondAttribute="trailing" constant="20" id="3rU-ys-7h6"/>
+                            <constraint firstItem="KiI-YP-GRA" firstAttribute="top" secondItem="SRB-D1-vDX" secondAttribute="bottom" constant="40" id="EPC-OE-ccg"/>
+                            <constraint firstItem="SRB-D1-vDX" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LxN-mr-bvJ"/>
+                            <constraint firstItem="KiI-YP-GRA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kRe-0A-Bxd"/>
+                            <constraint firstItem="SRB-D1-vDX" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="mJQ-Fl-JLe"/>
+                            <constraint firstItem="SRB-D1-vDX" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="o1N-tK-UrW"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="RiK-xu-yaA"/>
+                    <connections>
+                        <segue destination="YNS-xd-qeg" kind="presentation" modalPresentationStyle="fullScreen" id="gI2-s5-9kM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="944.92753623188412" y="77.678571428571431"/>
+        </scene>
+        <!--Result Screen View Controller-->
+        <scene sceneID="K2l-xF-A2r">
+            <objects>
+                <viewController id="YNS-xd-qeg" customClass="ResultScreenViewController" customModule="gitHubApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5qf-U2-Siv">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="2a5-pT-vTi">
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="bEh-PJ-RVm" firstAttribute="trailing" secondItem="2a5-pT-vTi" secondAttribute="trailing" id="GPX-gS-pYn"/>
+                            <constraint firstItem="2a5-pT-vTi" firstAttribute="leading" secondItem="bEh-PJ-RVm" secondAttribute="leading" id="Gy7-ZK-WvL"/>
+                            <constraint firstItem="bEh-PJ-RVm" firstAttribute="bottom" secondItem="2a5-pT-vTi" secondAttribute="bottom" id="O7V-Mn-alQ"/>
+                            <constraint firstItem="2a5-pT-vTi" firstAttribute="top" secondItem="bEh-PJ-RVm" secondAttribute="top" constant="100" id="Q6Q-vP-IeP"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bEh-PJ-RVm"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="KDW-kl-VOY"/>
+                    <connections>
+                        <outlet property="tableView" destination="2a5-pT-vTi" id="r8c-VK-48F"/>
+                        <segue destination="LxJ-xX-eto" kind="presentation" id="R7w-td-TMH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="w5d-Ly-pQU" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1689.8550724637682" y="78.348214285714278"/>
+        </scene>
+        <!--Detail Screen View Controller-->
+        <scene sceneID="V6T-2v-N3w">
+            <objects>
+                <viewController id="LxJ-xX-eto" customClass="DetailScreenViewController" customModule="gitHubApi" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="k5l-lx-R1R">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="xYW-05-07y"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t4a-wL-6Ge" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2437" y="76"/>
         </scene>
     </scenes>
 </document>
