@@ -12,6 +12,7 @@
 
 import UIKit
 import AlamofireNetworkActivityIndicator
+import SwiftOverlays
 
 
 protocol SearchScreenDisplayLogic: class
@@ -90,9 +91,9 @@ class SearchScreenViewController: UIViewController, SearchScreenDisplayLogic
             displayError(error: "Write Something!")
             return
         }
-        
+        SwiftOverlays.showCenteredWaitOverlay(self.view)
         getResutls(searchStr: user)
-        NetworkActivityIndicatorManager.shared.isEnabled = true
+         
     }
 
     
@@ -106,7 +107,7 @@ class SearchScreenViewController: UIViewController, SearchScreenDisplayLogic
   {
     //nameTextField.text = viewModel.name
     print("Result")
-    NetworkActivityIndicatorManager.shared.isEnabled = false
+    self.removeAllOverlays()
     print(viewModel.count)
     //performSegue(withIdentifier: "result", sender: viewModel)
     // router?.perform(UIStoryboardSegue()
@@ -116,6 +117,7 @@ class SearchScreenViewController: UIViewController, SearchScreenDisplayLogic
     
   func displayError(error: String) {
 //       loginUserText.text = "Error " + error
+    self.removeAllOverlays()
     let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
 
     alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))

@@ -8,6 +8,7 @@ target 'gitHubApi' do
   # Pods for gitHubApi
 	pod 'Alamofire'
 	pod 'AlamofireNetworkActivityIndicator', '~> 2.4'
+  pod 'SwiftOverlays', '~> 5.0.1'
 
   target 'gitHubApiTests' do
     inherit! :search_paths

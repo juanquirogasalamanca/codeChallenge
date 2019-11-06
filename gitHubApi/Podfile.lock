@@ -2,20 +2,24 @@ PODS:
   - Alamofire (4.9.0)
   - AlamofireNetworkActivityIndicator (2.4.0):
     - Alamofire (~> 4.8)
+  - SwiftOverlays (5.0.1)
 
 DEPENDENCIES:
   - Alamofire
   - AlamofireNetworkActivityIndicator (~> 2.4)
+  - SwiftOverlays (~> 5.0.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - AlamofireNetworkActivityIndicator
+    - SwiftOverlays
 
 SPEC CHECKSUMS:
   Alamofire: afc3e7c6db61476cb45cdd23fed06bad03bbc321
   AlamofireNetworkActivityIndicator: 9acc3de3ca6645bf0efed462396b0df13dd3e7b8
+  SwiftOverlays: ab459ea9194b0e96aaccaa00e9ead1bf6d46eef1
 
-PODFILE CHECKSUM: 141c6c161ddb704bc5620f55cc6c8ce227580fb4
+PODFILE CHECKSUM: b8dc36bebe1ecfa60c44b1efc84d3516f7b09de9
 
 COCOAPODS: 1.7.5
