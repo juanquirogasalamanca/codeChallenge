@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import Alamofire
 @testable import gitHubApi
 
 class gitHubApiTests: XCTestCase {
@@ -15,6 +16,7 @@ class gitHubApiTests: XCTestCase {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
         searchVc = SearchScreenViewController()
+        
     }
 
     override func tearDown() {
@@ -34,6 +36,8 @@ class gitHubApiTests: XCTestCase {
 //            XCTAssertEqual(output, "SomeOtherString", "someMethod() should return the correct string")
         
     }
+    
+    
 
     func testPerformanceExample() {
         // This is an example of a performance test case.
