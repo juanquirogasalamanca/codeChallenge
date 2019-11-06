@@ -14,7 +14,5 @@ import UIKit
 
 class ResultScreenWorker
 {
-  func doSomeWork()
-  {
-  }
+     
 }

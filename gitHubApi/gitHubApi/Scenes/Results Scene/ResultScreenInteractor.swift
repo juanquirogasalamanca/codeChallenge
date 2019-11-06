@@ -14,28 +14,28 @@ import UIKit
 
 protocol ResultScreenBusinessLogic
 {
-  func doSomething(request: ResultScreen.Something.Request)
+    func listResutls(request: SearchScreen.User.ViewModel)
 }
 
 protocol ResultScreenDataStore
 {
-  //var name: String { get set }
+   var results : [SearchScreen.User.ViewModel]{get set}
+    var result : SearchScreen.User.ViewModel{ get set }
 }
-
 class ResultScreenInteractor: ResultScreenBusinessLogic, ResultScreenDataStore
 {
   var presenter: ResultScreenPresentationLogic?
   var worker: ResultScreenWorker?
   //var name: String = ""
-  
+  var results : [SearchScreen.User.ViewModel] = []
   // MARK: Do something
-  
-  func doSomething(request: ResultScreen.Something.Request)
-  {
-    worker = ResultScreenWorker()
-    worker?.doSomeWork()
+    var result: SearchScreen.User.ViewModel = SearchScreen.User.ViewModel(login: "", id: 0, avatar_url: "", html_url: "", score: 0, repos_url: "")
     
-    let response = ResultScreen.Something.Response()
+  
+  func listResutls(request: SearchScreen.User.ViewModel)
+  {
+    result = request
+    let response = ResultScreen.UserList.Response()
     presenter?.presentSomething(response: response)
   }
 }

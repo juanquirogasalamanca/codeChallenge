@@ -20,10 +20,14 @@ protocol DetailScreenBusinessLogic
 protocol DetailScreenDataStore
 {
   //var name: String { get set }
+  var result : SearchScreen.User.ViewModel{get set}
 }
 
 class DetailScreenInteractor: DetailScreenBusinessLogic, DetailScreenDataStore
 {
+    var result: SearchScreen.User.ViewModel = SearchScreen.User.ViewModel(login: "", id: 0, avatar_url: "", html_url: "", score: 0, repos_url: "")
+    
+    
   var presenter: DetailScreenPresentationLogic?
   var worker: DetailScreenWorker?
   //var name: String = ""

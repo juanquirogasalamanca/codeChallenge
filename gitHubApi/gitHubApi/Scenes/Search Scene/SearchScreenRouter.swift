@@ -15,6 +15,7 @@ import UIKit
 @objc protocol SearchScreenRoutingLogic
 {
   //func routeToSomewhere(segue: UIStoryboardSegue?)
+   func routeToResults(segue: UIStoryboardSegue?)
 }
 
 protocol SearchScreenDataPassing
@@ -29,32 +30,35 @@ class SearchScreenRouter: NSObject, SearchScreenRoutingLogic, SearchScreenDataPa
   
   // MARK: Routing
   
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
-  //{
-  //  if let segue = segue {
-  //    let destinationVC = segue.destination as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //  } else {
-  //    let storyboard = UIStoryboard(name: "Main", bundle: nil)
-  //    let destinationVC = storyboard.instantiateViewController(withIdentifier: "SomewhereViewController") as! SomewhereViewController
-  //    var destinationDS = destinationVC.router!.dataStore!
-  //    passDataToSomewhere(source: dataStore!, destination: &destinationDS)
-  //    navigateToSomewhere(source: viewController!, destination: destinationVC)
-  //  }
-  //}
+  func routeToResults(segue: UIStoryboardSegue?)
+  {
+    if let segue = segue {
+      let destinationVC = segue.destination as! ResultScreenViewController
+      var destinationDS = destinationVC.router!.dataStore!
+      passDataToResults(source: dataStore!, destination: &destinationDS)
+    }
+    else {
+      let storyboard = UIStoryboard(name: "Main", bundle: nil)
+      let destinationVC = storyboard.instantiateViewController(withIdentifier: "resultScreen") as! ResultScreenViewController
+      var destinationDS = destinationVC.router!.dataStore!
+      passDataToResults(source: dataStore!, destination: &destinationDS)
+      navigateToSomewhere(source: viewController!, destination: destinationVC)
+    }
+  }
 
   // MARK: Navigation
   
-  //func navigateToSomewhere(source: SearchScreenViewController, destination: SomewhereViewController)
-  //{
-  //  source.show(destination, sender: nil)
-  //}
+  func navigateToSomewhere(source: SearchScreenViewController, destination: ResultScreenViewController)
+  {
+    source.show(destination, sender: nil)
+    //source.navigationController?.popViewController(animated: true)
+  }
   
   // MARK: Passing data
   
-  //func passDataToSomewhere(source: SearchScreenDataStore, destination: inout SomewhereDataStore)
-  //{
-  //  destination.name = source.name
-  //}
+  func passDataToResults(source: SearchScreenDataStore, destination: inout ResultScreenDataStore)
+  {
+    destination.results = source.results
+    print(destination.results.count)
+  }
 }

@@ -14,13 +14,14 @@ import UIKit
 
 protocol ResultScreenDisplayLogic: class
 {
-  func displaySomething(viewModel: ResultScreen.Something.ViewModel)
+    func displayResults(viewModel: [ResultScreen.UserList.ViewModel])
 }
 
 class ResultScreenViewController: UIViewController, ResultScreenDisplayLogic
 {
   var interactor: ResultScreenBusinessLogic?
   var router: (NSObjectProtocol & ResultScreenRoutingLogic & ResultScreenDataPassing)?
+  var displayedResutls : [SearchScreen.User.ViewModel] = []
 
   // MARK: Object lifecycle
   
@@ -50,6 +51,7 @@ class ResultScreenViewController: UIViewController, ResultScreenDisplayLogic
     presenter.viewController = viewController
     router.viewController = viewController
     router.dataStore = interactor
+
   }
   
   // MARK: Routing
@@ -69,22 +71,58 @@ class ResultScreenViewController: UIViewController, ResultScreenDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    doSomething()
+    loadResults()
   }
   
   // MARK: Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var numberOfResults: UILabel!
     
-  func doSomething()
+    
+  func loadResults()
   {
-    let request = ResultScreen.Something.Request()
-    interactor?.doSomething(request: request)
+   
+    //print(viewController.router?.dataStore?.results.count)
+    
+   // let request = ResultScreen.Something.Request()
+//    interactor?.listResutls(request: (self.router?.dataStore!.results)!)
+    displayedResutls = (self.router?.dataStore!.results)!
+    numberOfResults.text = "Listing \(displayedResutls.count) results."
+    
   }
   
-  func displaySomething(viewModel: ResultScreen.Something.ViewModel)
+  func displayResults(viewModel: [ResultScreen.UserList.ViewModel])
   {
     //nameTextField.text = viewModel.name
   }
+    
+
+}
+
+extension ResultScreenViewController : UITableViewDelegate{
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        router?.dataStore?.result = displayedResutls[indexPath.row]
+        self.interactor?.listResutls(request: displayedResutls[indexPath.row])
+        self.router?.routeToDetails(segue: nil)
+        
+        
+    }
+}
+
+extension ResultScreenViewController : UITableViewDataSource{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return displayedResutls.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        let item = displayedResutls[indexPath.row]
+        cell.textLabel?.text = item.login
+        
+        return cell
+    }
+    
+    
 }

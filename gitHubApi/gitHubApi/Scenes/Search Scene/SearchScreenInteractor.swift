@@ -20,6 +20,7 @@ protocol SearchScreenBusinessLogic
 protocol SearchScreenDataStore
 {
   //var name: String { get set }
+    var results : [SearchScreen.User.ViewModel]{get set}
 }
 
 class SearchScreenInteractor: SearchScreenBusinessLogic, SearchScreenDataStore
@@ -27,7 +28,7 @@ class SearchScreenInteractor: SearchScreenBusinessLogic, SearchScreenDataStore
   var presenter: SearchScreenPresentationLogic?
   var worker: SearchScreenWorker?
   //var name: String = ""
-  
+    var results : [SearchScreen.User.ViewModel] = []
   // MARK: Do something
   
   func getSearchResult(request: SearchScreen.User.Request)
@@ -35,8 +36,20 @@ class SearchScreenInteractor: SearchScreenBusinessLogic, SearchScreenDataStore
     worker = SearchScreenWorker()
     worker?.getUsersData(user: request.userName, completion: {(response, error) in
         //response = SearchScreen.User.Response()
-        self.presenter?.presentResponse(response: response!)
+        if let resp = response{
+            var itemList : [SearchScreen.User.ViewModel] = []
+            for item in resp.items{
+                let viewModel = SearchScreen.User.ViewModel(login: item.login, id: item.id, avatar_url: item.avatarURL, html_url: item.htmlURL, score: item.score, repos_url: item.reposURL)
+                itemList.append(viewModel)
+            }
+            self.results = itemList
+            self.presenter?.presentResponse(response: itemList)
+            
+        }
         
+        if let error = error , !error.localizedDescription.isEmpty {
+            self.presenter?.presentError(error: error.localizedDescription)
+        }
     })
     
     

@@ -14,7 +14,7 @@ import UIKit
 
 protocol ResultScreenPresentationLogic
 {
-  func presentSomething(response: ResultScreen.Something.Response)
+  func presentSomething(response: ResultScreen.UserList.Response)
 }
 
 class ResultScreenPresenter: ResultScreenPresentationLogic
@@ -23,9 +23,10 @@ class ResultScreenPresenter: ResultScreenPresentationLogic
   
   // MARK: Do something
   
-  func presentSomething(response: ResultScreen.Something.Response)
+  func presentSomething(response: ResultScreen.UserList.Response)
   {
-    let viewModel = ResultScreen.Something.ViewModel()
-    viewController?.displaySomething(viewModel: viewModel)
+   // let viewModel = ResultScreen.UserList.ViewModel(login: <#String#>)
+    
+//    viewController?.displaySomething()
   }
 }

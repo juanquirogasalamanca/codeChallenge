@@ -16,7 +16,7 @@ enum ResultScreen
 {
   // MARK: Use cases
   
-  enum Something
+  enum UserList
   {
     struct Request
     {
@@ -26,6 +26,10 @@ enum ResultScreen
     }
     struct ViewModel
     {
+        var login : String
+        var id : Int
+        var avatar_url : String
+        var score : Double
     }
   }
 }

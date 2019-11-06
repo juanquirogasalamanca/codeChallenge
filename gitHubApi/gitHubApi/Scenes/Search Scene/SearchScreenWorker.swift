@@ -21,7 +21,7 @@ class SearchScreenWorker
         
         completion(response, nil)
     }) { (error) in
-        print(error)
+       // print(error)
         
         completion(nil, error)
     }

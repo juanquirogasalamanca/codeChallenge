@@ -34,6 +34,7 @@
 		510BCD002371F39E00D6A287 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BCCFF2371F39E00D6A287 /* SceneDelegate.swift */; };
 		510BCD032371FAED00D6A287 /* AlamoFireRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BCD022371FAED00D6A287 /* AlamoFireRequests.swift */; };
 		510BCD09237204D000D6A287 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BCD08237204D000D6A287 /* EndPoints.swift */; };
+		510BCD0B237225D600D6A287 /* AlamoFireExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 510BCD0A237225D600D6A287 /* AlamoFireExtensions.swift */; };
 		569E4C42D825E86F56B9C50F /* Pods_gitHubApiUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4FBCF9EFA9D9191F86E28C4 /* Pods_gitHubApiUITests.framework */; };
 		6132DD671FD40E335B2240C9 /* Pods_gitHubApi.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5308ED5FB2409C8AF5F7D916 /* Pods_gitHubApi.framework */; };
 		EDEE40D1C21491058BAD170E /* Pods_gitHubApiTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C346426E7CB0097F3B1848A7 /* Pods_gitHubApiTests.framework */; };
@@ -92,6 +93,7 @@
 		510BCCFF2371F39E00D6A287 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = ../../../Downloads/testUI/testUI/SceneDelegate.swift; sourceTree = "<group>"; };
 		510BCD022371FAED00D6A287 /* AlamoFireRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoFireRequests.swift; sourceTree = "<group>"; };
 		510BCD08237204D000D6A287 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		510BCD0A237225D600D6A287 /* AlamoFireExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlamoFireExtensions.swift; sourceTree = "<group>"; };
 		5308ED5FB2409C8AF5F7D916 /* Pods_gitHubApi.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_gitHubApi.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CD6F3C30163F112064ADB2A /* Pods-gitHubApiUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gitHubApiUITests.debug.xcconfig"; path = "Target Support Files/Pods-gitHubApiUITests/Pods-gitHubApiUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		67741C0AE43BA112DBFC4E24 /* Pods-gitHubApi.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-gitHubApi.debug.xcconfig"; path = "Target Support Files/Pods-gitHubApi/Pods-gitHubApi.debug.xcconfig"; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 		510BCD052372005900D6A287 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				510BCD0A237225D600D6A287 /* AlamoFireExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -517,6 +520,7 @@
 				510BCCB62371E5B400D6A287 /* ResultScreenInteractor.swift in Sources */,
 				510BCCC22371E5CA00D6A287 /* DetailScreenInteractor.swift in Sources */,
 				510BCCA72371E4FA00D6A287 /* SearchScreenInteractor.swift in Sources */,
+				510BCD0B237225D600D6A287 /* AlamoFireExtensions.swift in Sources */,
 				510BCCB12371E5B400D6A287 /* ResultScreenPresenter.swift in Sources */,
 				510BCCC02371E5CA00D6A287 /* DetailScreenModels.swift in Sources */,
 				510BCD002371F39E00D6A287 /* SceneDelegate.swift in Sources */,

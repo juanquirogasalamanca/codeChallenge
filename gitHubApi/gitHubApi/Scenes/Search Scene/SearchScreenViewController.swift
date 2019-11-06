@@ -74,7 +74,7 @@ class SearchScreenViewController: UIViewController, SearchScreenDisplayLogic
   override func viewDidLoad()
   {
     super.viewDidLoad()
-    NetworkActivityIndicatorManager.shared.isEnabled = true
+    
     
   }
   
@@ -87,11 +87,12 @@ class SearchScreenViewController: UIViewController, SearchScreenDisplayLogic
         
         guard let user = searchTextField.text, !searchTextField.text!.isEmpty else
         {
-            
+            displayError(error: "Write Something!")
             return
         }
         
         getResutls(searchStr: user)
+        NetworkActivityIndicatorManager.shared.isEnabled = true
     }
 
     
@@ -105,12 +106,22 @@ class SearchScreenViewController: UIViewController, SearchScreenDisplayLogic
   {
     //nameTextField.text = viewModel.name
     print("Result")
+    NetworkActivityIndicatorManager.shared.isEnabled = false
     print(viewModel.count)
+    //performSegue(withIdentifier: "result", sender: viewModel)
+    // router?.perform(UIStoryboardSegue()
+    router?.routeToResults(segue: nil)
   }
     
     
   func displayError(error: String) {
 //       loginUserText.text = "Error " + error
+    let alert = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+
+    alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
+    
+
+    self.present(alert, animated: true)
     print(error)
   }
 }

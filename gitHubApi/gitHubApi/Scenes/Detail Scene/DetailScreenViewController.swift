@@ -21,7 +21,7 @@ class DetailScreenViewController: UIViewController, DetailScreenDisplayLogic
 {
   var interactor: DetailScreenBusinessLogic?
   var router: (NSObjectProtocol & DetailScreenRoutingLogic & DetailScreenDataPassing)?
-
+  var displayedResutls : [SearchScreen.User.ViewModel] = []
   // MARK: Object lifecycle
   
   override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?)
@@ -75,15 +75,31 @@ class DetailScreenViewController: UIViewController, DetailScreenDisplayLogic
   // MARK: Do something
   
   //@IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var idLabel: UILabel!
+    @IBOutlet weak var loginLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var repoUrlLabel: UILabel!
+    
   
   func doSomething()
   {
     let request = DetailScreen.Something.Request()
     interactor?.doSomething(request: request)
+    
+    if let result = router?.dataStore?.result{
+        loadUserData(user: result)
+    }
+    
   }
   
   func displaySomething(viewModel: DetailScreen.Something.ViewModel)
   {
     //nameTextField.text = viewModel.name
   }
+    func loadUserData(user : SearchScreen.User.ViewModel){
+        idLabel.text = "\(user.id)"
+        loginLabel.text = user.login
+        scoreLabel.text = "\(user.score)"
+        repoUrlLabel.text = user.repos_url
+    }
 }
