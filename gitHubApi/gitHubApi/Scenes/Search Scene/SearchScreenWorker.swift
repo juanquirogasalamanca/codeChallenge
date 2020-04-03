@@ -17,12 +17,8 @@ class SearchScreenWorker
     func getUsersData(user: String  , completion: @escaping (SearchScreen.User.UserList?, Error?) -> ())
   {
     AlamoFireRequests.sharedInstance.requestUser(user: user, success: { (response) in
-        //print(response)
-        
         completion(response, nil)
     }) { (error) in
-       // print(error)
-        
         completion(nil, error)
     }
   }

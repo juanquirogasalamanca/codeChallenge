@@ -16,12 +16,10 @@ class AlamoFireRequests: NSObject {
     func requestUser(user : String, success:@escaping (SearchScreen.User.UserList) -> Void, failure:@escaping (Error) -> Void)
     {
         let strURL = EndPoints.sharedInstance.searchUser(user: user)
-        //print(strURL)
         Alamofire.request(strURL).responseData { (responseObject) -> Void in
             print(responseObject)
             if responseObject.result.isSuccess {
                 guard let user = try? JSONDecoder().decode(SearchScreen.User.UserList.self, from: responseObject.data!)else{return}
-                
                 success(user)
             }
 

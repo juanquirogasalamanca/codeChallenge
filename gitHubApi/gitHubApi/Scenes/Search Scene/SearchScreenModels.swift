@@ -27,6 +27,14 @@ enum SearchScreen
         let totalCount: Int
         let incompleteResults: Bool
         let items: [Response]
+        var resultList: [SearchScreen.User.ViewModel]{
+            var itemList : [SearchScreen.User.ViewModel] = []
+            for item in items{
+               let viewModel = SearchScreen.User.ViewModel(login: item.login, id: item.id, avatar_url: item.avatarURL, html_url: item.htmlURL, score: item.score, repos_url: item.reposURL)
+               itemList.append(viewModel)
+            }
+            return itemList
+        }
 
         enum CodingKeys: String, CodingKey {
             case totalCount = "total_count"
@@ -60,6 +68,8 @@ enum SearchScreen
             case receivedEventsURL = "received_events_url"
             case type, score
         }
+        
+        
     }
     
     struct ViewModel
@@ -70,6 +80,8 @@ enum SearchScreen
         var html_url : String
         var score : Double
         var repos_url : String
+        
+       
     }
   }
 }

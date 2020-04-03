@@ -14,7 +14,6 @@ import UIKit
 
 @objc protocol SearchScreenRoutingLogic
 {
-  //func routeToSomewhere(segue: UIStoryboardSegue?)
    func routeToResults(segue: UIStoryboardSegue?)
 }
 

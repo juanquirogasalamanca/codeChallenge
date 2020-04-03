@@ -36,20 +36,12 @@ class SearchScreenInteractor: SearchScreenBusinessLogic, SearchScreenDataStore
     worker = SearchScreenWorker()
     worker?.getUsersData(user: request.userName, completion: {(response, error) in
         //response = SearchScreen.User.Response()
-        if let resp = response{
-            var itemList : [SearchScreen.User.ViewModel] = []
-            for item in resp.items{
-                let viewModel = SearchScreen.User.ViewModel(login: item.login, id: item.id, avatar_url: item.avatarURL, html_url: item.htmlURL, score: item.score, repos_url: item.reposURL)
-                itemList.append(viewModel)
-            }
-            self.results = itemList
-            self.presenter?.presentResponse(response: itemList)
-            
-        }
-        
         if let error = error , !error.localizedDescription.isEmpty {
             self.presenter?.presentError(error: error.localizedDescription)
         }
+        guard let response = response?.resultList else {return}
+        self.results = response
+        self.presenter?.presentResponse(response: self.results)
     })
     
     
